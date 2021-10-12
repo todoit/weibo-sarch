@@ -456,6 +456,7 @@ class SearchSpider(scrapy.Spider):
                     weibo['pics'] = ''
                     weibo['video_url'] = ''
                 weibo['retweet_id'] = ''
+                weibo['keyword'] = keyword
                 if retweet_sel and retweet_sel[0].xpath(
                         './/div[@node-type="feed_list_forwardContent"]/a[1]'):
                     retweet = WeiboItem()
@@ -514,6 +515,7 @@ class SearchSpider(scrapy.Spider):
                     retweet['pics'] = pics
                     retweet['video_url'] = video_url
                     retweet['retweet_id'] = ''
+                    retweet['keyword'] = keyword
                     yield {'weibo': retweet, 'keyword': keyword}
                     weibo['retweet_id'] = retweet['id']
                 print(weibo)
